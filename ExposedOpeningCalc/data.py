@@ -1,14 +1,13 @@
 import numpy as np
 
-z_area_list = [0, 30, 40, 50, 100, 101]
+z_area_list = [30, 40, 50, 100, 101]
 
 y_selection = {
-    0: 'none',
-    1: 'y_30',
-    2: 'y_40',
-    3: 'y_50',
-    4: 'y_100',
-    5: 'y_101'
+    0: 'y_30',
+    1: 'y_40',
+    2: 'y_50',
+    3: 'y_100',
+    4: 'y_101'
 }
 
 x_limit_list = np.array([
