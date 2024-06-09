@@ -5,14 +5,14 @@ import numpy as np
 import data
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 
 class ResidentialCalc():
     """Class that will handle calculating for Residential, business and personal services,
     and low-hazard industrial occupation classification of buildings."""
 
-    def calc_values(self, exposed_face):
+    def get_values(self, exposed_face):
         face = data.z_area_list[0]
         for v in data.z_area_list:
             if v <= exposed_face:
@@ -24,11 +24,11 @@ class ResidentialCalc():
 
         if exposed_face != face:
             logger.debug(f'these are the different param {exposed_face} and closest face {face}')
-            return self.calibrate_new_values(exposed_face, idx)
+            return self.calc_new_values(exposed_face, idx)
 
         return getattr(data, data.y_selection[idx])
 
-    def calibrate_new_values(self, value, idx):
+    def calc_new_values(self, value, idx):
         # get the % diff between index of z and the next z value
         min_z = data.z_area_list[idx]
         max_z = data.z_area_list[idx+1]
@@ -76,7 +76,7 @@ if __name__ == '__main__':
     parser.add_argument('-m', '--max_area', default=30)
     args = parser.parse_args()
     app = ResidentialCalc()
-    area = app.calc_values(int(args.max_area))
+    area = app.get_values(int(args.max_area))
     res = app.calc_point(float(args.dist_limit), area)
     logger.debug(res)
-    print(f'Maximum area is {res:.2f} square meters')
+    print(f'Maximum percentage of unprotected openings is {res:.2f} square meters')

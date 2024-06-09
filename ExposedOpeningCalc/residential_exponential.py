@@ -122,8 +122,8 @@ if __name__ == '__main__':
     app = ResidentialCalc()
     #res_data = a.load_table()
     #print(res_data)
-    # res = app.calc_point(app.p30_x, app.p30_y)
-    res = app.calc_point(app.p100_x, app.p100_y)
+    res = app.calc_point(app.p30_x, app.p30_y)
+    #res = app.calc_point(app.p100_x, app.p100_y)
 
     print(res)
     app.show_plot(res)
