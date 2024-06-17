@@ -1,17 +1,17 @@
 ﻿
-namespace ExposedOpeningCalculator
+namespace ExposedOpening
 {
     internal record ResidentialData
     {
         public static readonly int[] ZAreaList = { 30, 40, 50, 100, 101 };
 
-        public static readonly Dictionary<int, string> YSelection = new Dictionary<int, string>
+        public static readonly Dictionary<int, Func<double[]>> YSelection = new Dictionary<int, Func<double[]>>
         {
-            {0, "y_30" },
-            {1, "y_40" },
-            {2, "y_50" },
-            {3, "y_100" },
-            {4, "y_101" }
+            {0, () => Y30 },
+            {1, () => Y40 },
+            {2, () => Y50 },
+            {3, () => Y100 },
+            {4, () => Y101 }
         };
 
         public static readonly double[] XLimitList = {

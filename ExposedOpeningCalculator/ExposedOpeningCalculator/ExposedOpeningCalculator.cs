@@ -1,41 +1,60 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.Data;
+using System.Reflection;
 
 
-namespace ExposedOpeningCalculator
+namespace ExposedOpening
 {
-    public class ExposedOpeningCalculator
+    public class ExposeOpeningCalculator
     {
-        double maxArea = 30.0;
-        double distLimit = 1.4;
-
-        private static ResidentialData resData = new ResidentialData();
-        
-
-
-        static void Init( double maxArea, double distLimit)
+         public double[] GetValues(double exposedFace)
         {
-            double area = GetValues(maxArea);
-            double result = CalcPoint(distLimit, area);
-        }
-        private static double GetValues(double exposedFace)
-        {
-            int face = resData.ZAreaList
-            var result = 0.0;
+            int face = ResidentialData.ZAreaList[0];
+            foreach (int v in ResidentialData.ZAreaList)
+            {
+                if (v <= exposedFace) face = v;
+            }
 
-            return result;
+            var faceIndex = Array.IndexOf(ResidentialData.ZAreaList, face);
+
+            if (exposedFace != face) return CalcNewValues(exposedFace, faceIndex);
+
+            return ResidentialData.YSelection[faceIndex]();
         }
 
-        private static double CalcNewValues(double value, int index)
+        private static double[] CalcNewValues(double faceValue, int zIndex)
         {
-            double area = 0.0;
-            return area;
+            var minZ = ResidentialData.ZAreaList[zIndex];
+            var maxZ = ResidentialData.ZAreaList[zIndex + 1];
+
+            var zMargin = maxZ - minZ;
+            var fix = faceValue - minZ;
+            var realMargin = fix/zMargin;
+
+            var newY = faceValue;
+            var minY = ResidentialData.YSelection[zIndex]();
+            var maxY = ResidentialData.YSelection[zIndex + 1]();
+
+            double[] newXList = {};
+            for (int i = 0; i < ResidentialData.XLimitList.Length; i++)
+            {
+                var minX = minY[i];
+                var maxX = maxY[i];
+                var xMargin = minX - maxX;
+                var newX = minX - xMargin * realMargin;
+                newXList.Append(newX);
+            }
+
+            return newXList;
         }
 
-        private static double CalcPoint(double distLimit, double area)
+        public double CalcPoint(double distLimit, double[] area)
         {
-            double result = 0.0;
-            return result;
+            if (distLimit < ResidentialData.XLimitList[1]) return 0.00;
+            if (distLimit > ResidentialData.XLimitList.Max()) return 100;
+            var x = ResidentialData.XLimitList;
+            var y = area;
+            return new LinearInterpolate().Interp(distLimit, x, y);
         }
 
 
