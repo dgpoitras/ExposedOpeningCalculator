@@ -1,8 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using System.Data;
-using System.Reflection;
-
-
+﻿
 namespace ExposedOpening
 {
     public class ExposeOpeningCalculator
