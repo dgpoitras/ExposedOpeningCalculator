@@ -1,7 +1,7 @@
 ﻿
 namespace ExposedOpening
 {
-    internal record ResidentialData
+    internal record CommercialData
     {
         public static readonly int[] ZAreaList = { 30, 40, 50, 100, 101 };
 
@@ -31,12 +31,12 @@ namespace ExposedOpening
 
         public static readonly double[] Y30 = {
             0,
-            7,
-            9,
-            12,
-            39,
-            88,
-            100,
+            4,
+            4,
+            6,
+            20,
+            44,
+            80,
             100,
             100,
             100,
@@ -46,13 +46,13 @@ namespace ExposedOpening
 
         public static readonly double[] Y40 = {
             0,
-            7,
-            8,
-            11,
-            32,
-            69,
-            100,
-            100,
+            4,
+            4,
+            6,
+            16,
+            34,
+            61,
+            97,
             100,
             100,
             100,
@@ -61,13 +61,13 @@ namespace ExposedOpening
 
         public static readonly double[] Y50 = {
             0,
-            7,
-            8,
-            10,
-            28,
-            57,
-            100,
-            100,
+            4,
+            4,
+            5,
+            14,
+            29,
+            50,
+            79,
             100,
             100,
             100,
@@ -76,14 +76,14 @@ namespace ExposedOpening
 
         public static readonly double[] Y100 = {
             0,
-            7,
-            8,
+            4,
+            4,
+            4,
             9,
-            18,
-            34,
-            56,
-            84,
-            100,
+            17,
+            28,
+            42,
+            60,
             100,
             100,
             100
@@ -91,16 +91,16 @@ namespace ExposedOpening
 
         public static readonly double[] YOver100 = {
             0,
-            7,
-            7,
-            8,
-            12,
-            19,
-            28,
-            40,
-            55,
-            92,
-            100,
+            4,
+            4,
+            4,
+            6,
+            10,
+            14,
+            20,
+            27,
+            46,
+            70,
             100
         };
     }
