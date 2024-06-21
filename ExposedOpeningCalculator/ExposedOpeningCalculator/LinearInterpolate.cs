@@ -1,4 +1,7 @@
-﻿namespace ExposedOpening
+﻿using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("ExposedOpeningCalculator_UnitTests")]
+namespace ExposedOpening
 {
     internal class LinearInterpolate
     {

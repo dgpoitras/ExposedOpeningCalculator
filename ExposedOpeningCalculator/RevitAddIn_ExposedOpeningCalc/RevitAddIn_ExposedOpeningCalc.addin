@@ -1,0 +1,12 @@
+﻿<RevitAddIns>
+    <AddIn Type="Command">
+        <Name>RevitAddIn_ExposedOpeningCalc</Name>
+        <Assembly>RevitAddIn_ExposedOpeningCalc/RevitAddIn_ExposedOpeningCalc.dll</Assembly>
+        <AddInId>02071D9B-9E16-41A1-8B96-7CD01874307B</AddInId>
+        <FullClassName>RevitAddIn_ExposedOpeningCalc.Commands.StartupCommand</FullClassName>
+        <Text>RevitAddIn_ExposedOpeningCalc</Text>
+        <VendorId>Development</VendorId>
+        <VendorDescription></VendorDescription>
+        <VendorEmail></VendorEmail>
+    </AddIn>
+</RevitAddIns>
